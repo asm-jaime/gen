@@ -1,2 +1,2 @@
 # gen
-random data(string/slice/map/int/etc) generator on golang
+golang random data(string/slice/map/int/etc) generator
