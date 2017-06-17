@@ -1,6 +1,7 @@
 package gen
 
 import (
+	"encoding/base64"
 	"math/rand"
 	"time"
 )
@@ -8,7 +9,7 @@ import (
 var letterRunes = []rune("abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ")
 var numberRunes = []rune("0123456789")
 
-// Str retrun a string with n length letters
+// Str string of length n as a array of runes
 func Str(n int) string { // {{{
 	rand.Seed(time.Now().UTC().UnixNano())
 	str := make([]rune, n)
@@ -18,7 +19,7 @@ func Str(n int) string { // {{{
 	return string(str)
 } // }}}
 
-// StrNums retrun a string with n length numbers
+// StrNums string of length n as a number
 func StrNums(n int) string { // {{{
 	rand.Seed(time.Now().UTC().UnixNano())
 	strn := make([]rune, n)
@@ -33,13 +34,21 @@ func StrNums(n int) string { // {{{
 	return string(strn)
 } // }}}
 
-// MinMax a num within, type int
-func MinMax(min, max int) int {
+// MinMax num within a range
+func MinMax(min, max int) int { // {{{
+	rand.Seed(time.Now().UTC().UnixNano())
 	if min > max {
 		buf := min
 		min = max
 		max = buf
 	}
-	rand.Seed(time.Now().UTC().UnixNano())
 	return rand.Intn(max-min) + min
-}
+} // }}}
+
+// Token random string of length n as a base64 token
+func Token(n int) string { // {{{
+	rand.Seed(time.Now().UTC().UnixNano())
+	some_bytes := make([]byte, n)
+	rand.Read(some_bytes)
+	return base64.StdEncoding.EncodeToString(some_bytes)
+} // }}}

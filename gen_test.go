@@ -15,7 +15,7 @@ func TestStr(t *testing.T) { // {{{
 		t.Error("Str empty")
 	}
 	if str1 == str2 {
-		t.Error("Str generated same string")
+		t.Error("Str generated the same string")
 	}
 } // }}}
 
@@ -28,7 +28,7 @@ func TestStrNums(t *testing.T) { // {{{
 		t.Error("StrNums empty")
 	}
 	if str1 == str2 {
-		t.Error("StrNums generated same string")
+		t.Error("StrNums generated the same string")
 	}
 
 	str1_sp := strings.Split(str1, ",")
@@ -37,7 +37,7 @@ func TestStrNums(t *testing.T) { // {{{
 	}
 } // }}}
 
-func TestMinMax(t *testing.T) {
+func TestMinMax(t *testing.T) { // {{{
 	// case 1
 	{
 		st := MinMax(0, 10)
@@ -62,4 +62,17 @@ func TestMinMax(t *testing.T) {
 			t.Error("MinMax not within")
 		}
 	}
-}
+} // }}}
+
+func TestRandToken(t *testing.T) { // {{{
+	token1 := Token(10)
+	token2 := Token(10)
+	fmt.Println(token1)
+	fmt.Println(token2)
+	if token1 == "" {
+		t.Error("Token empty")
+	}
+	if token1 == token2 {
+		t.Error("Token generated the same string")
+	}
+} // }}}
