@@ -45,8 +45,8 @@ func MinMax(min, max int) int { // {{{
 	return rand.Intn(max-min) + min
 } // }}}
 
-// Token random string of length n as a base64 token
-func Token(n uint) string { // {{{
+// TokenB64 random string of length n as a base64 token
+func TokenB64(n uint) string { // {{{
 	rand.Seed(time.Now().UTC().UnixNano())
 	some_bytes := make([]byte, n)
 	rand.Read(some_bytes)
