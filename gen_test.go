@@ -1,39 +1,65 @@
 package gen
 
 import (
-	"fmt"
+	// "fmt"
 	"strings"
 	"testing"
 )
 
 func TestStr(t *testing.T) { // {{{
-	str1 := Str(10)
-	str2 := Str(10)
-	//fmt.Println(str1)
-	//fmt.Println(str2)
-	if str1 == "" {
-		t.Error("Str empty")
+	// case same
+	{
+		str1 := Str(10)
+		str2 := Str(10)
+		//fmt.Println(str1)
+		//fmt.Println(str2)
+		if str1 == "" {
+			t.Error("Str empty")
+		}
+		if str1 == str2 {
+			t.Error("Str generated the same string")
+		}
 	}
-	if str1 == str2 {
-		t.Error("Str generated the same string")
+	// case zero
+	{
+		str := Str(0)
+		if str != "" {
+			t.Error("Str should be empty")
+		}
+	}
+	// case negative
+	{
+		// str := Str(-10)
+		// fmt.Println(str)
 	}
 } // }}}
 
 func TestStrNums(t *testing.T) { // {{{
-	str1 := StrNums(10)
-	str2 := StrNums(10)
-	//fmt.Println(str1)
-	//fmt.Println(str2)
-	if str1 == "" {
-		t.Error("StrNums empty")
+	// case same
+	{
+		str1 := StrNums(10)
+		str2 := StrNums(10)
+		//fmt.Println(str1)
+		//fmt.Println(str2)
+		if str1 == "" {
+			t.Error("StrNums empty")
+		}
+		if str1 == str2 {
+			t.Error("StrNums generated the same string")
+		}
 	}
-	if str1 == str2 {
-		t.Error("StrNums generated the same string")
+	// case first digit should not be 0
+	{
+		str := StrNums(10)
+		str_sp := strings.Split(str, ",")
+		if str_sp[0] == "0" {
+			t.Error("StrNums gened fdigit as 0")
+		}
 	}
-
-	str1_sp := strings.Split(str1, ",")
-	if str1_sp[0] == "0" {
-		t.Error("StrNums string started with 0")
+	// case negative
+	{
+		// str := StrNums(-10)
+		// fmt.Println(str)
 	}
 } // }}}
 
@@ -41,7 +67,7 @@ func TestMinMax(t *testing.T) { // {{{
 	// case 1
 	{
 		st := MinMax(0, 10)
-		fmt.Println(st)
+		// fmt.Println(st)
 		if (st > 10) || (st < 0) {
 			t.Error("MinMax not within")
 		}
@@ -49,7 +75,7 @@ func TestMinMax(t *testing.T) { // {{{
 	// case 2
 	{
 		st := MinMax(-1, 1)
-		fmt.Println(st)
+		// fmt.Println(st)
 		if (st > 1) || (st < -1) {
 			t.Error("MinMax not within")
 		}
@@ -57,7 +83,7 @@ func TestMinMax(t *testing.T) { // {{{
 	// case 3
 	{
 		st := MinMax(1, -1)
-		fmt.Println(st)
+		// fmt.Println(st)
 		if (st > 1) || (st < -1) {
 			t.Error("MinMax not within")
 		}
@@ -65,14 +91,16 @@ func TestMinMax(t *testing.T) { // {{{
 } // }}}
 
 func TestRandToken(t *testing.T) { // {{{
-	token1 := Token(10)
-	token2 := Token(10)
-	fmt.Println(token1)
-	fmt.Println(token2)
-	if token1 == "" {
-		t.Error("Token empty")
+	// case 1
+	{
+		token := Token(10)
+		// fmt.Println(token)
+		if token == "" {
+			t.Error("Token empty")
+		}
 	}
-	if token1 == token2 {
-		t.Error("Token generated the same string")
+	// case negative
+	{
+		// token := Token(-10)
 	}
 } // }}}

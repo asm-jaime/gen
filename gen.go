@@ -10,7 +10,7 @@ var letterRunes = []rune("abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ")
 var numberRunes = []rune("0123456789")
 
 // Str string of length n as a array of runes
-func Str(n int) string { // {{{
+func Str(n uint) string { // {{{
 	rand.Seed(time.Now().UTC().UnixNano())
 	str := make([]rune, n)
 	for i := range str {
@@ -20,7 +20,7 @@ func Str(n int) string { // {{{
 } // }}}
 
 // StrNums string of length n as a number
-func StrNums(n int) string { // {{{
+func StrNums(n uint) string { // {{{
 	rand.Seed(time.Now().UTC().UnixNano())
 	strn := make([]rune, n)
 	for i := range strn {
@@ -46,7 +46,7 @@ func MinMax(min, max int) int { // {{{
 } // }}}
 
 // Token random string of length n as a base64 token
-func Token(n int) string { // {{{
+func Token(n uint) string { // {{{
 	rand.Seed(time.Now().UTC().UnixNano())
 	some_bytes := make([]byte, n)
 	rand.Read(some_bytes)
