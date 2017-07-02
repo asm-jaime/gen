@@ -20,7 +20,7 @@ func Str(n uint) string { // {{{
 } // }}}
 
 // StrNums string of length n as a number
-func StrNums(n uint) string { // {{{
+func StrNums(n int) string { // {{{
 	rand.Seed(time.Now().UTC().UnixNano())
 	strn := make([]rune, n)
 	for i := range strn {
@@ -52,3 +52,28 @@ func TokenB64(n uint) string { // {{{
 	rand.Read(some_bytes)
 	return base64.StdEncoding.EncodeToString(some_bytes)
 } // }}}
+
+// SliceRndGap return slice with random points in the interim gap
+func SliceRndGap(len int, min int, max int) (res []int) {
+	if len < 1 {
+		return res
+	}
+	if min > max {
+		buf := min
+		min = max
+		max = buf
+	}
+	step := IAbs((max - min) / len)
+	if step < 1 {
+		return res
+	}
+	res = append(res, min)
+	start := min + 1
+	end := start + step - 1
+	for i := 0; i < len; i++ {
+		res = append(res, MinMax(start, end))
+		start = end + 2
+		end = start + step - 1
+	}
+	return res
+}
