@@ -65,26 +65,36 @@ func TokenB64(n uint) string { // {{{
 } // }}}
 
 // SliceRndGap return slice with random points in the interim gap
+// if len = 3, result will be [0, 45, 100]
 func SliceRndGap(len int, min int, max int) (res []int) {
-	if len < 1 {
-		return res
-	}
 	if min > max {
 		buf := min
 		min = max
 		max = buf
 	}
-	step := IAbs((max - min) / len)
-	if step < 1 {
+
+	len = len - 2
+	if len < 1 {
+		res = append(res, min)
+		res = append(res, max)
 		return res
 	}
-	res = append(res, min)
+
+	step := IAbs((max - min) / len)
+	if step < 3 {
+		res = append(res, min)
+		res = append(res, max)
+		return res
+	}
+
 	start := min + 1
 	end := start + step - 1
+	res = append(res, min)
 	for i := 0; i < len; i++ {
 		res = append(res, MinMax(start, end))
-		start = end + 2
+		start = end + 1
 		end = start + step - 1
 	}
+	res = append(res, max)
 	return res
 }

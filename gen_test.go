@@ -1,7 +1,7 @@
 package gen
 
 import (
-	// "fmt"
+	"fmt"
 	"strings"
 	"testing"
 )
@@ -82,8 +82,11 @@ func TestStrNums(t *testing.T) { // {{{
 	}
 	// case negative
 	{
-		// str := StrNums(-10)
-		// fmt.Println(str)
+		str := StrNums(-10)
+		if str != "" {
+			t.Error("StrNums not empty for negative case")
+		}
+		//fmt.Println(str)
 	}
 } // }}}
 
@@ -128,3 +131,50 @@ func TestRandTokenB64(t *testing.T) { // {{{
 		// token := TokenB64(-10)
 	}
 } // }}}
+
+func TestSliceRndGap(t *testing.T) {
+	// case 2 elems
+	{
+		slice := SliceRndGap(2, 0, 10)
+		// fmt.Println(slice)
+		if len(slice) != 2 {
+			t.Error("SliceRndGap  ")
+		}
+	}
+	// case -10 elems
+	{
+		slice := SliceRndGap(-10, 0, 10)
+		if len(slice) != 2 {
+			t.Error("SliceRndGap ")
+		}
+	}
+	// case 3 elems
+	{
+		slice := SliceRndGap(3, 0, 10)
+		if len(slice) != 3 {
+			t.Error("SliceRndGap ")
+		}
+	}
+	// case 5 elems for 0-10
+	{
+		slice := SliceRndGap(6, 0, 10)
+		if len(slice) != 2 {
+			t.Error("SliceRndGap for overlap step not 2 elems")
+		}
+	}
+	// case min==max
+	{
+		slice := SliceRndGap(0, 10, 10)
+		if len(slice) != 2 {
+			t.Error("SliceRndGap not 2 elems")
+		}
+	}
+	// case with negative gap
+	{
+		slice := SliceRndGap(4, -12, 10)
+		fmt.Println(slice)
+		if len(slice) != 4 {
+			t.Error("SliceRndGap negative not 4 elems")
+		}
+	}
+}
