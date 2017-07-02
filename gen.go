@@ -9,6 +9,17 @@ import (
 var letterRunes = []rune("abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ")
 var numberRunes = []rune("0123456789")
 
+// IAbs absolute value of n as a int number
+func IAbs(n int) int { // {{{
+	if n < 0 {
+		return -n
+	}
+	if n == 0 {
+		return 0
+	}
+	return n
+} // }}}
+
 // Str string of length n as a array of runes
 func Str(n uint) string { // {{{
 	rand.Seed(time.Now().UTC().UnixNano())

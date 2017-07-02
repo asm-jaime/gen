@@ -6,6 +6,30 @@ import (
 	"testing"
 )
 
+func TestIAbs(t *testing.T) { // {{{
+	// case negative
+	{
+		num := IAbs(-10)
+		if num != 10 {
+			t.Error("IAbs not correct for -10")
+		}
+	}
+	// case zero
+	{
+		num := IAbs(0)
+		if num != 0 {
+			t.Error("IAbs not correct for 0")
+		}
+	}
+	// case positive
+	{
+		num := IAbs(10)
+		if num != 10 {
+			t.Error("IAbs not correct for 10")
+		}
+	}
+} // }}}
+
 func TestStr(t *testing.T) { // {{{
 	// case same
 	{
@@ -90,10 +114,10 @@ func TestMinMax(t *testing.T) { // {{{
 	}
 } // }}}
 
-func TestRandToken(t *testing.T) { // {{{
+func TestRandTokenB64(t *testing.T) { // {{{
 	// case 1
 	{
-		token := Token(10)
+		token := TokenB64(10)
 		// fmt.Println(token)
 		if token == "" {
 			t.Error("Token empty")
@@ -101,6 +125,6 @@ func TestRandToken(t *testing.T) { // {{{
 	}
 	// case negative
 	{
-		// token := Token(-10)
+		// token := TokenB64(-10)
 	}
 } // }}}
