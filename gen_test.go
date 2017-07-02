@@ -1,7 +1,6 @@
 package gen
 
 import (
-	"fmt"
 	"strings"
 	"testing"
 )
@@ -14,7 +13,7 @@ func TestIAbs(t *testing.T) { // {{{
 			t.Error("IAbs not correct for -10")
 		}
 	}
-	// case zero
+	// case 0
 	{
 		num := IAbs(0)
 		if num != 0 {
@@ -31,12 +30,24 @@ func TestIAbs(t *testing.T) { // {{{
 } // }}}
 
 func TestStr(t *testing.T) { // {{{
-	// case same
+	// case negative
+	{
+		str := Str(-10)
+		if str != "" {
+			t.Error("Str should be empty")
+		}
+	}
+	// case 0
+	{
+		str := Str(0)
+		if str != "" {
+			t.Error("Str should be empty")
+		}
+	}
+	// case same strs
 	{
 		str1 := Str(10)
 		str2 := Str(10)
-		//fmt.Println(str1)
-		//fmt.Println(str2)
 		if str1 == "" {
 			t.Error("Str empty")
 		}
@@ -44,21 +55,23 @@ func TestStr(t *testing.T) { // {{{
 			t.Error("Str generated the same string")
 		}
 	}
-	// case zero
-	{
-		str := Str(0)
-		if str != "" {
-			t.Error("Str should be empty")
-		}
-	}
-	// case negative
-	{
-		// str := Str(-10)
-		// fmt.Println(str)
-	}
 } // }}}
 
 func TestStrNums(t *testing.T) { // {{{
+	// case negative
+	{
+		str := StrNums(-10)
+		if str != "" {
+			t.Error("StrNums not empty for negative")
+		}
+	}
+	// case 0
+	{
+		str := StrNums(0)
+		if str != "" {
+			t.Error("StrNums should be empty for 0")
+		}
+	}
 	// case same
 	{
 		str1 := StrNums(10)
@@ -79,14 +92,6 @@ func TestStrNums(t *testing.T) { // {{{
 		if str_sp[0] == "0" {
 			t.Error("StrNums gened fdigit as 0")
 		}
-	}
-	// case negative
-	{
-		str := StrNums(-10)
-		if str != "" {
-			t.Error("StrNums not empty for negative case")
-		}
-		//fmt.Println(str)
 	}
 } // }}}
 
@@ -172,7 +177,7 @@ func TestSliceRndGap(t *testing.T) {
 	// case with negative gap
 	{
 		slice := SliceRndGap(4, -12, 10)
-		fmt.Println(slice)
+		// fmt.Println(slice)
 		if len(slice) != 4 {
 			t.Error("SliceRndGap negative not 4 elems")
 		}

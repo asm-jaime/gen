@@ -22,7 +22,7 @@ func IAbs(n int) int { // {{{
 
 // Str string of length n as a array of runes
 func Str(n int) string { // {{{
-	if n < 0 {
+	if n < 1 {
 		return ""
 	}
 	rand.Seed(time.Now().UTC().UnixNano())
@@ -35,7 +35,7 @@ func Str(n int) string { // {{{
 
 // StrNums string of length n as a number
 func StrNums(n int) string { // {{{
-	if n < 0 {
+	if n < 1 {
 		return ""
 	}
 	rand.Seed(time.Now().UTC().UnixNano())
@@ -64,7 +64,7 @@ func MinMax(min, max int) int { // {{{
 
 // TokenB64 random string of length n as a base64 token
 func TokenB64(n int) string { // {{{
-	if n < 0 {
+	if n < 1 {
 		return ""
 	}
 	rand.Seed(time.Now().UTC().UnixNano())
