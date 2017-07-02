@@ -21,7 +21,10 @@ func IAbs(n int) int { // {{{
 } // }}}
 
 // Str string of length n as a array of runes
-func Str(n uint) string { // {{{
+func Str(n int) string { // {{{
+	if n < 0 {
+		return ""
+	}
 	rand.Seed(time.Now().UTC().UnixNano())
 	str := make([]rune, n)
 	for i := range str {
@@ -32,6 +35,9 @@ func Str(n uint) string { // {{{
 
 // StrNums string of length n as a number
 func StrNums(n int) string { // {{{
+	if n < 0 {
+		return ""
+	}
 	rand.Seed(time.Now().UTC().UnixNano())
 	strn := make([]rune, n)
 	for i := range strn {
@@ -57,7 +63,10 @@ func MinMax(min, max int) int { // {{{
 } // }}}
 
 // TokenB64 random string of length n as a base64 token
-func TokenB64(n uint) string { // {{{
+func TokenB64(n int) string { // {{{
+	if n < 0 {
+		return ""
+	}
 	rand.Seed(time.Now().UTC().UnixNano())
 	some_bytes := make([]byte, n)
 	rand.Read(some_bytes)
