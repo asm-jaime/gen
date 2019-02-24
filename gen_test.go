@@ -5,7 +5,7 @@ import (
 	"testing"
 )
 
-func TestIAbs(t *testing.T) { // {{{
+func TestIAbs(t *testing.T) {
 	// case negative
 	{
 		num := IAbs(-10)
@@ -27,9 +27,9 @@ func TestIAbs(t *testing.T) { // {{{
 			t.Error("IAbs not correct for 10")
 		}
 	}
-} // }}}
+}
 
-func TestStr(t *testing.T) { // {{{
+func TestStr(t *testing.T) {
 	// case negative
 	{
 		str := Str(-10)
@@ -55,9 +55,9 @@ func TestStr(t *testing.T) { // {{{
 			t.Error("Str generated the same string")
 		}
 	}
-} // }}}
+}
 
-func TestStrNums(t *testing.T) { // {{{
+func TestStrNums(t *testing.T) {
 	// case negative
 	{
 		str := StrNums(-10)
@@ -93,9 +93,9 @@ func TestStrNums(t *testing.T) { // {{{
 			t.Error("StrNums gened fdigit as 0")
 		}
 	}
-} // }}}
+}
 
-func TestMinMax(t *testing.T) { // {{{
+func TestMinMax(t *testing.T) {
 	// case 1
 	{
 		st := MinMax(0, 10)
@@ -120,9 +120,9 @@ func TestMinMax(t *testing.T) { // {{{
 			t.Error("MinMax not within")
 		}
 	}
-} // }}}
+}
 
-func TestRandTokenB64(t *testing.T) { // {{{
+func TestRandTokenB64(t *testing.T) {
 	// case 1
 	{
 		token := TokenB64(10)
@@ -135,13 +135,12 @@ func TestRandTokenB64(t *testing.T) { // {{{
 	{
 		// token := TokenB64(-10)
 	}
-} // }}}
+}
 
 func TestSliceRndGap(t *testing.T) {
 	// case 2 elems
 	{
 		slice := SliceRndGap(2, 0, 10)
-		// fmt.Println(slice)
 		if len(slice) != 2 {
 			t.Error("SliceRndGap  ")
 		}

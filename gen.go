@@ -10,7 +10,7 @@ var letterRunes = []rune("abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ")
 var numberRunes = []rune("0123456789")
 
 // IAbs absolute value of n as a int number
-func IAbs(n int) int { // {{{
+func IAbs(n int) int {
 	if n < 0 {
 		return -n
 	}
@@ -18,10 +18,10 @@ func IAbs(n int) int { // {{{
 		return 0
 	}
 	return n
-} // }}}
+}
 
 // Str string of length n as a array of runes
-func Str(n int) string { // {{{
+func Str(n int) string {
 	if n < 1 {
 		return ""
 	}
@@ -31,10 +31,10 @@ func Str(n int) string { // {{{
 		str[i] = letterRunes[rand.Intn(len(letterRunes))]
 	}
 	return string(str)
-} // }}}
+}
 
 // StrNums string of length n as a number
-func StrNums(n int) string { // {{{
+func StrNums(n int) string {
 	if n < 1 {
 		return ""
 	}
@@ -49,10 +49,10 @@ func StrNums(n int) string { // {{{
 		strn[0] = cutRunes[rand.Intn(len(cutRunes))]
 	}
 	return string(strn)
-} // }}}
+}
 
-// MinMax num within a range
-func MinMax(min, max int) int { // {{{
+// MinMax random num bentween min and max
+func MinMax(min, max int) int {
 	rand.Seed(time.Now().UTC().UnixNano())
 	if min > max {
 		buf := min
@@ -60,18 +60,18 @@ func MinMax(min, max int) int { // {{{
 		max = buf
 	}
 	return rand.Intn(max-min) + min
-} // }}}
+}
 
 // TokenB64 random string of length n as a base64 token
-func TokenB64(n int) string { // {{{
+func TokenB64(n int) string {
 	if n < 1 {
 		return ""
 	}
 	rand.Seed(time.Now().UTC().UnixNano())
-	some_bytes := make([]byte, n)
-	rand.Read(some_bytes)
-	return base64.StdEncoding.EncodeToString(some_bytes)
-} // }}}
+	bts := make([]byte, n)
+	rand.Read(bts)
+	return base64.StdEncoding.EncodeToString(bts)
+}
 
 // SliceRndGap return slice with random points in the interim gap
 // if len = 3, result will be [0, 45, 100]
